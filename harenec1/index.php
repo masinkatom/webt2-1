@@ -10,6 +10,7 @@ error_reporting(E_ALL);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ocenení nobelovou cenou</title>
+    <link rel="icon" type="image/x-icon" href="images/dawg.png">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -28,10 +29,10 @@ error_reporting(E_ALL);
             </ul>
         </nav>
 
-        <main>
-
-            <h1>Zoznam víťazov nobelovej ceny.</h1>
-        </main>
     </div>
+    <main>
+
+        <h1>Zoznam víťazov nobelovej ceny.</h1>
+    </main>
 </body>
 </html>

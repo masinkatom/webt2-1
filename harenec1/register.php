@@ -11,74 +11,7 @@ require_once '../config.php';
 // Kniznica pre 2FA
 require_once 'PHPGangsta/GoogleAuthenticator.php';
 
-// ------- Pomocne funkcie -------
-function checkEmpty($field)
-{
-    // Funkcia pre kontrolu, ci je premenna po orezani bielych znakov prazdna.
-    // Metoda trim() oreze a odstrani medzery, tabulatory a ine "whitespaces".
-    if (empty(trim($field))) {
-        return true;
-    }
-    return false;
-}
-
-function checkLength($field, $min, $max)
-{
-    // Funkcia, ktora skontroluje, ci je dlzka retazca v ramci "min" a "max".
-    // Pouzitie napr. pre "login" alebo "password" aby mali pozadovany pocet znakov.
-    $string = trim($field);     // Odstranenie whitespaces.
-    $length = strlen($string);      // Zistenie dlzky retazca.
-    if ($length < $min || $length > $max) {
-        return false;
-    }
-    return true;
-}
-
-function checkUsername($username)
-{
-    // Funkcia pre kontrolu, ci username obsahuje iba velke, male pismena, cisla a podtrznik.
-    if (!preg_match('/^[a-zA-Z0-9_]+$/', trim($username))) {
-        return false;
-    }
-    return true;
-}
-
-function checkGmail($email)
-{
-    // Funkcia pre kontrolu, ci zadany email je gmail.
-    if (!preg_match('/^[\w.+\-]+@gmail\.com$/', trim($email))) {
-        return false;
-    }
-    return true;
-}
-
-function userExist($db, $login, $email)
-{
-    // Funkcia pre kontrolu, ci pouzivatel s "login" alebo "email" existuje.
-    $exist = false;
-
-    $param_login = trim($login);
-    $param_email = trim($email);
-
-    $sql = "SELECT id FROM users WHERE login = :login OR email = :email";
-    $stmt = $db->prepare($sql);
-    $stmt->bindParam(":login", $param_login, PDO::PARAM_STR);
-    $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
-
-    $stmt->execute();
-
-    if ($stmt->rowCount() == 1) {
-        $exist = true;
-    }
-
-    unset($stmt);
-
-    return $exist;
-}
-
-// ------- ------- ------- -------
-
-
+require_once 'validations.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errmsg = "";
@@ -120,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Validacia hesla
-    if (checkEmpty($_POST['lastname']) === true) {
-        $errmsg .= "<p>Zadajte priezvisko.</p>";
-    } elseif (checkLength($_POST['login'], 5, 255) === false) {
+    if (checkEmpty($_POST['password']) === true) {
+        $errmsg .= "<p>Zadajte heslo.</p>";
+    } elseif (checkLength($_POST['password'], 5, 255) === false) {
         $errmsg .= "<p>Heslo musí mať min. 5 a max. 255 znakov.</p>";
     }
 
@@ -174,6 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registrácia</title>
+    <link rel="icon" type="image/x-icon" href="images/dawg.png">
     <link rel="stylesheet" href="css/main.css">
 
 </head>

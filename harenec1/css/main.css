@@ -238,6 +238,42 @@ button:hover {
     color: red;
 }
 
+.google-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    margin: 0 20%;
+    border-top: 2px solid var(--webte-color-yellow);
+}
+
+
+.btn-google-login {
+    display: flex;
+    width: 6rem;
+    height: 6rem;
+    background-image: url(../images/google-icon.svg);
+    background-size: 6rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--webte-color-ltBlack);
+    border-radius: 5px;
+    padding: 3.7rem 4.4rem;
+    transition: all 400ms;
+}
+
+.btn-google-login:hover {
+    transform: rotate(360deg);
+    transition: all 400ms;
+}
+
+.content-outline {
+    background-color: var(--webte-color-dkGrey);
+    border-radius: 10px;
+    padding: 2rem;
+}
+
 @media screen and (max-width:470px) {
 
     input[type=text],

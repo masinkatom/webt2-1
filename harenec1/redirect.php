@@ -49,11 +49,10 @@ if (isset($_GET['code'])) {
 
     // Ulozime potrebne data do session.
     $_SESSION['access_token'] = $token['access_token'];
+    $_SESSION['loggedin'] = true;
     $_SESSION['email'] = $g_email;
     $_SESSION['id'] = $g_id;
     $_SESSION['fullname'] = $g_fullname;
-    $_SESSION['name'] = $g_name;
-    $_SESSION['surname'] = $g_surname;
 
 }
 // Presmerujem pouzivatela na hlavnu stranku alebo kam potrebujem

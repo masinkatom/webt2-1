@@ -12,8 +12,6 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     $email = $_SESSION['email'];
     $id = $_SESSION['id'];
     $fullname = $_SESSION['fullname'];
-    $name = $_SESSION['name'];
-    $surname = $_SESSION['surname'];
 
 } else {
     // Ak pouzivatel prihlaseny nie je, presmerujem ho na hl. stranku.
@@ -23,12 +21,15 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 <!doctype html>
 <html lang="sk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ocenení nobelovou cenou</title>
+    <link rel="icon" type="image/x-icon" href="images/dawg.png">
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
     <div class="container">
         <nav class="main-nav">
@@ -45,17 +46,29 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
             </ul>
         </nav>
     </div>
-<main>
+    <main class="container">
+        <div class="content-outline">
+            <h2>Vitaj
+                <?php echo $fullname ?>.
+            </h2>
+            <p>Si prihlaseny pod emailom:
+                <?php echo $email ?>
+            </p>
+            <p>Tvoj identifikator je:
+                <?php echo $id ?>
+            </p>
+            <a href="logout.php">
+                <button>Odhlásenie</button>
+            </a>
+            <a href="index.php">
+                <button>Späť na hlavnú stránku</button>
+            </a>
+            
 
-    <h3>Vitaj <?php echo $fullname ?></h3>
-    <p>Si prihlaseny pod emailom: <?php echo $email?></p>
-    <p>Tvoj identifikator je: <?php echo $id?></p>
-    <p>Meno: <?php echo $name?>, Priezvisko: <?php echo $surname?></p>
-
-    <a role="button" class="secondary" href="logout.php">Odhlasenie</a></p>
-    <a role="button" href="index.php">Spat na hlavnu stranku</a></p>
+        </div>
 
 
-</main>
+    </main>
 </body>
+
 </html>
