@@ -120,7 +120,7 @@ main h1 {
     justify-content: center;
     align-items: center;
     transition: all 300ms;
-    margin: 2rem 0;
+    margin: .5rem 0 2rem 0;
 }
 
 
@@ -257,7 +257,7 @@ button:hover {
     background-size: 6rem;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: var(--webte-color-ltBlack);
+    
     border-radius: 5px;
     padding: 3.7rem 4.4rem;
     transition: all 400ms;
@@ -265,6 +265,7 @@ button:hover {
 
 .btn-google-login:hover {
     transform: rotate(360deg);
+    background-color: var(--webte-color-ltBlack);
     transition: all 400ms;
 }
 

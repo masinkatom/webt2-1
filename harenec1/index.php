@@ -2,6 +2,11 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+session_start();
+
+require_once "navBarItems.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -17,22 +22,17 @@ error_reporting(E_ALL);
     <div class="container">
         <nav class="main-nav">
             <ul class="nav-list">
-                <li class="nav-item">
-                    <a href="index.php">Domov</a>
-                </li>
-                <li class="nav-item">
-                    <a href="login.php">Prihlásenie</a>
-                </li>
-                <li class="nav-item">
-                    <a href="register.php">Registrácia</a>
-                </li>
+                <?php 
+                    echo getNavBarItems();
+                ?>
+                
             </ul>
         </nav>
 
     </div>
-    <main>
-
+    <main class="container">
         <h1>Zoznam víťazov nobelovej ceny.</h1>
+        
     </main>
 </body>
 </html>

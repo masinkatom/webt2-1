@@ -6,6 +6,8 @@ error_reporting(E_ALL);
 
 session_start();
 
+require_once 'navBarItems.php';
+
 // Ak je pouzivatel prihlaseny, ziskam data zo session, pracujem s DB etc...
 if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
@@ -34,15 +36,9 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     <div class="container">
         <nav class="main-nav">
             <ul class="nav-list">
-                <li class="nav-item">
-                    <a href="index.php">Domov</a>
-                </li>
-                <li class="nav-item">
-                    <a href="login.php">Prihlásenie</a>
-                </li>
-                <li class="nav-item">
-                    <a href="register.php">Registrácia</a>
-                </li>
+                <?php
+                    echo getNavBarItems();
+                ?>
             </ul>
         </nav>
     </div>

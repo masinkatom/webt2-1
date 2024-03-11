@@ -8,29 +8,11 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("location: restricted.php");
     exit;
 }
-
-require_once 'vendor/autoload.php';
+require_once 'googleVars.php';
 require_once '../config.php';
 require_once 'PHPGangsta/GoogleAuthenticator.php';
 require_once 'validations.php';
-
-// Inicializacia Google API klienta
-$client = new Google\Client();
-
-// Definica konfiguracneho JSON suboru pre autentifikaciu klienta.
-// Subor sa stiahne z Google Cloud Console v zalozke Credentials.
-$client->setAuthConfig('../client_secret.json');
-
-// Nastavenie URI, na ktoru Google server presmeruje poziadavku po uspesnej autentifikacii.
-$redirect_uri = "https://node10.webte.fei.stuba.sk/harenec1/redirect.php";
-$client->setRedirectUri($redirect_uri);
-
-// Definovanie Scopes - rozsah dat, ktore pozadujeme od pouzivatela z jeho Google uctu.
-$client->addScope("email");
-$client->addScope("profile");
-
-// Vytvorenie URL pre autentifikaciu na Google server - odkaz na Google prihlasenie.
-$auth_url = $client->createAuthUrl();
+require_once 'navBarItems.php';
 
 if (isset($_SESSION['googleLogin']) && $_SESSION['googleLogin']) {
     $_SESSION['googleLogin'] = false;
@@ -146,15 +128,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <nav class="main-nav">
             <ul class="nav-list">
-                <li class="nav-item">
-                    <a href="index.php">Domov</a>
-                </li>
-                <li class="nav-item">
-                    <a href="login.php">Prihlásenie</a>
-                </li>
-                <li class="nav-item">
-                    <a href="register.php">Registrácia</a>
-                </li>
+                <?php 
+                    echo getNavBarItems();
+                ?>
             </ul>
         </nav>
     </div>
@@ -195,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="2fa-code">
                         2FA kód:
                     </label>
-                    <input type="text" name="2fa-code" value="" id="2fa-code" placeholder="napr. 654 321" required>
+                    <input type="text" name="2fa-code" value="" id="2fa-code" placeholder="napr. 654321" required>
                     <span class="err" id="err-password"></span>
                 </div>
 
@@ -212,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             </form>
             <div class="google-login">
-                <p>Alebo na prihlás pomocou google účtu:</p>
+                <p>Alebo na prihláste pomocou Googlu:</p>
                 <br>
                 <?php
                     echo '<a class="btn-google-login" href="' . filter_var($auth_url, FILTER_SANITIZE_URL) . '"></a>'
@@ -221,26 +197,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <p>Nemáte vytvorené konto? <a href="register.php">Zaregistrujte sa tu.</a></p>
     </main>
-
-    <div>
-        <?php
-        // Ak som prihlaseny, existuje session premenna.
-        if (isset($_SESSION['logged']) && $_SESSION['access_token']) {
-            // Vypis relevantne info a uvitaciu spravu.
-            echo '<h3>Vitaj ' . $_SESSION['name'] . '</h3>';
-            echo '<p>Si prihlaseny ako: ' . $_SESSION['email'] . '</p>';
-            echo '<p><a role="button" href="restricted.php">Zabezpecena stranka</a>';
-            echo '<a role="button" class="secondary" href="logout.php">Odhlas ma</a></p>';
-
-        } else {
-            // Ak nie som prihlaseny, zobraz mi tlacidlo na prihlasenie.
-            echo '<h3>Nie si prihlaseny</h3>';
-            echo '<a role="button" href="' . filter_var($auth_url, FILTER_SANITIZE_URL) . '">Google prihlasenie</a>';
-        }
-        ?>
-
-
-    </div>
 </body>
 
 </html>

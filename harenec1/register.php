@@ -10,8 +10,9 @@ session_start();
 require_once '../config.php';
 // Kniznica pre 2FA
 require_once 'PHPGangsta/GoogleAuthenticator.php';
-
+require_once 'googleVars.php';
 require_once 'validations.php';
+require_once 'navBarItems.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errmsg = "";
@@ -116,15 +117,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <nav class="main-nav">
             <ul class="nav-list">
-                <li class="nav-item">
-                    <a href="index.php">Domov</a>
-                </li>
-                <li class="nav-item">
-                    <a href="login.php">Prihlásenie</a>
-                </li>
-                <li class="nav-item">
-                    <a href="register.php">Registrácia</a>
-                </li>
+                <?php
+                    echo getNavBarItems();
+                ?>
             </ul>
         </nav>
     </div>
@@ -201,6 +196,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
 
             </form>
+            <div class="google-login">
+                <p>Alebo na registrujte pomocou Googlu:</p>
+                <br>
+                <?php
+                    echo '<a class="btn-google-login" href="' . filter_var($auth_url, FILTER_SANITIZE_URL) . '"></a>'
+                ?>
+            </div>
         </div>
         <p>Máte vytvorené konto? <a href="login.php"> Prihláste sa tu.</a></p>
     </main>
