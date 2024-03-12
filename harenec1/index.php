@@ -47,6 +47,7 @@ require_once "navBarItems.php";
                 <h4>Počet záznamov na stránku:</h4>
                 <select name="page-length" id="page-length">
                     <option value="10">10</option>
+                    <option value="20">20</option>
                     <option value="50">50</option>
                     <option value="100">100</option>
                     <option value="-1">Všetky</option>
@@ -57,10 +58,16 @@ require_once "navBarItems.php";
                 <h4>Filter podľa roku:</h4>
                 <select name="filter-year" id="filter-year">
                     <option value="">Vyberte rok</option>
-                    <option value="1901">1901</option>
-                    <option value="1902">1902</option>
-                    <option value="100">100</option>
-                    <option value="-1">Všetky</option>
+                    <?php 
+                        $sql = "SELECT DISTINCT year FROM prizes";
+                        $stmt = $pdo->query($sql);
+                
+                        // Fetch and loop through the data to generate options
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            echo "<option value='" . $row['year'] . "'>" . $row['year'] . "</option>";
+                        }
+                        unset($stmt);
+                    ?>
                 </select>
             </div>
 
@@ -68,10 +75,16 @@ require_once "navBarItems.php";
                 <h4>Filter podľa kategórie:</h4>
                 <select name="filter-category" id="filter-category">
                     <option value="">Vyberte kategóriu</option>
-                    <option value="fyzika">10</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value="-1">Všetky</option>
+                    <?php 
+                        $sql = "SELECT category FROM categories";
+                        $stmt = $pdo->query($sql);
+                
+                        // Fetch and loop through the data to generate options
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            echo "<option value='" . $row['category'] . "'>" . $row['category'] . "</option>";
+                        }
+                        unset($stmt);
+                    ?>
                 </select>
             </div>
 
