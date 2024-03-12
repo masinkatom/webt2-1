@@ -13,6 +13,7 @@ require_once '../config.php';
 require_once 'PHPGangsta/GoogleAuthenticator.php';
 require_once 'validations.php';
 require_once 'navBarItems.php';
+require_once 'cookies.php';
 
 if (isset($_SESSION['googleLogin']) && $_SESSION['googleLogin']) {
     $_SESSION['googleLogin'] = false;
@@ -125,6 +126,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </head>
 
 <body>
+
+    <?php 
+        echo getCookiesContent();
+    ?>
+
     <div class="container">
         <nav class="main-nav">
             <ul class="nav-list">
@@ -197,6 +203,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <p>Nemáte vytvorené konto? <a href="register.php">Zaregistrujte sa tu.</a></p>
     </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="js/cookiesPopup.js"></script>
 </body>
 
 </html>

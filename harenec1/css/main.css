@@ -41,6 +41,10 @@ h3 {
     margin: 1.5rem 0;
 }
 
+h4 {
+    font-size: 1.6rem;
+}
+
 img {
     width: 100%;
 }
@@ -219,10 +223,11 @@ button:hover {
     width: 100%;
     height: 100%;
     z-index: 2;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-.modal img, .modal p {
+.modal img,
+.modal p {
     padding: 2rem 5rem;
 }
 
@@ -257,7 +262,7 @@ button:hover {
     background-size: 6rem;
     background-repeat: no-repeat;
     background-position: center;
-    
+
     border-radius: 5px;
     padding: 3.7rem 4.4rem;
     transition: all 400ms;
@@ -274,6 +279,74 @@ button:hover {
     border-radius: 10px;
     padding: 2rem;
 }
+
+#myTable_wrapper {
+    font-size: 1.5rem;
+}
+
+#myTable td {
+    cursor: pointer;
+}
+
+#myTable_wrapper select {
+    width: 15rem;
+    font-size: 1.4rem;
+}
+
+#myTable_wrapper input {
+    width: 15rem;
+    font-size: 1.5rem;
+}
+
+#myTable_wrapper a {
+    font-size: 1.5rem;
+}
+
+/* COOKIE POLICY */
+
+.cookie-popup {
+    display: block;
+    width: 100%;
+    position: fixed;
+    bottom: 1rem;
+    left: 0;
+    background: #fff;
+    z-index: 1000;
+    font-size: 14px;
+    border-radius: 5px;
+    color: #1c1c1c;
+    padding: 1rem;
+}
+
+.cookie-popup button {
+    float: right;
+    height: 8rem;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.table-nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    justify-content: space-between;
+    background-color: var(--webte-color-dkGrey);
+    border-radius: 5px;
+}
+
+.table-selector {
+    padding: 1rem;
+    border-left: 2px solid var(--webte-color-yellow);
+}
+
+.table-nav select {
+    width: auto;
+    font-size: 1.5rem;
+}
+
 
 @media screen and (max-width:470px) {
 

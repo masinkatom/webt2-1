@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 session_start();
 
 require_once 'navBarItems.php';
+require_once 'cookies.php';
 
 // Ak je pouzivatel prihlaseny, ziskam data zo session, pracujem s DB etc...
 if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
@@ -33,6 +34,11 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 </head>
 
 <body>
+
+    <?php 
+        echo getCookiesContent();
+    ?>
+
     <div class="container">
         <nav class="main-nav">
             <ul class="nav-list">
@@ -65,6 +71,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
     </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="js/cookiesPopup.js"></script>
 </body>
 
 </html>
