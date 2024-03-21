@@ -30,12 +30,47 @@ $(document).ready(function () {
         }
     );
 
-
+    let modal = document.getElementById("modal2");
     $('#myTable tbody').on('click', 'tr', function () {
-        var rowData = table.row(this).data(); // Get data of clicked row
-        console.log(rowData); // Log row data to console
+        let rowData = table.row(this).data();
+        
+        
+        $.ajax({
+            type: 'POST',
+            url: './getRowData.php', // PHP script to fetch data from SQL database
+            data: { 
+                meno: rowData[1],
+                priezvisko: rowData[2],
+                organizacia: rowData[3]
+            },
+            success: function(response) {
+                // Populate modal with fetched data
+                $('.modal-data').html(response);
+
+                // Display the modal
+                modal.classList.remove("hidden");
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                alert('Error fetching data from server');
+            }
+        });
+
+        // $('#input-name').val(rowData[0]);
+
+        // $('#fetch').submit();
 
     });
+
+    $('#close-modal').on('click', function () {
+        modal.classList.add("hidden");
+    });
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.classList.add("hidden");
+        }
+    }
 
     function handleTableRows(e) {
         table.page.len(e.target.value).draw();

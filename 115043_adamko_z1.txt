@@ -1,0 +1,23 @@
+WEBTE1 – Zadanie 1
+
+Meno:
+Tomáš Adamko
+
+Adresa zadania:
+https://node10.webte.fei.stuba.sk/harenec1/
+
+PhpMyAdmin:
+https://node10.webte.fei.stuba.sk/phpmyadmin/
+
+Prístupové údaje k databáze (nobel_prizes):
+xadamko
+marko69420
+
+Konfiguračný súbor:
+https://node10.webte.fei.stuba.sk/config.php
+
+Export databázy:
+nobel_prizes.sql
+
+Dodatočná inštalácia:
+-

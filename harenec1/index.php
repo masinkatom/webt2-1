@@ -38,7 +38,9 @@ require_once "navBarItems.php";
 
             </ul>
         </nav>
-
+        <form id="fetch" action="getRowData.php" method="POST" style="display: none;">
+            <input type="hidden" name="name" id="input-name">
+        </form>
     </div>
     <main class="container">
         <h1>Zoznam víťazov nobelovej ceny.</h1>
@@ -105,6 +107,18 @@ require_once "navBarItems.php";
             </tbody>
         </table>
     </main>
+
+    <div id="modal2" class="modal modal2 hidden">
+        <div class="info-modal">
+            <h2>Laureát.</h2>
+            <div class="modal-data">
+
+            </div>
+            <img id="close-modal" src="images/close-icon.svg" alt="close">
+        </div>
+        
+        
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

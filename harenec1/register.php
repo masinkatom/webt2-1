@@ -210,7 +210,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ?>
             </div>
         </div>
-        <p>Máte vytvorené konto? <a href="login.php"> Prihláste sa tu.</a></p>
+        <p>Máte vytvorené konto? <a href="login.php">Prihláste sa tu.</a></p>
     </main>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="js/register.js"></script>

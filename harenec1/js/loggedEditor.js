@@ -1,22 +1,31 @@
-$(document).ready(function() {
+$(document).ready(function () {
     let btnAdd = document.getElementById("record-add");
     let btnEdit = document.getElementById("record-edit");
     let btnRemove = document.getElementById("record-remove");
 
-    btnAdd.addEventListener("click", showAddRecord);
-    btnEdit.addEventListener("click", showEditRecord);
-    btnRemove.addEventListener("click", showRemoveRecord);
+    btnAdd.addEventListener("click", showForm);
+    btnEdit.addEventListener("click", showForm);
+    btnRemove.addEventListener("click", showForm);
 
+    let oldFormId = "";
 
-    function showAddRecord() {
-
+    function showForm(e) {
+        changeShowedForm("form-" + e.target.id);
     }
 
-    function showEditRecord() {
-        
-    }
+    function changeShowedForm(formId) {
+        let newForm = document.getElementById(formId).parentNode;
 
-    function showRemoveRecord() {
-        
+        var forms = document.querySelectorAll('div.form-outline');
+        forms.forEach((form) => {
+            form.classList.add('hidden');
+        });
+        if (formId != oldFormId) {
+            newForm.classList.remove("hidden");
+            oldFormId = formId;
+        }
+        else {
+            oldFormId = "";
+        }
     }
 });

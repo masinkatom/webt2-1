@@ -71,9 +71,34 @@ function userExist($db, $login, $email)
     return $exist;
 }
 
+function countryExist($db, $country)
+{
+    $exist = false;
+
+    $country = trim($country);
+
+    $sql = "SELECT id FROM countries WHERE country = :coutry";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(":country", $country, PDO::PARAM_STR);
+
+    $stmt->execute();
+
+    if ($stmt->rowCount() >= 1) {
+        $exist = true;
+    }
+
+    unset($stmt);
+
+    return $exist;
+}
+
 function isMail($string) {
     if (str_contains($string, "@")) {
         return true;
     }
     return false;
+}
+
+function containsOnlyNumbers($str) {
+    return preg_match('/^[0-9]+$/', $str); // if matches - true
 }

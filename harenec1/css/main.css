@@ -149,7 +149,7 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0;
+    margin: 1rem .5rem;
 }
 
 label {
@@ -219,10 +219,10 @@ button:hover {
 .modal {
     top: 0;
     left: 0;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 100;
     background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -234,6 +234,8 @@ button:hover {
 .modal img {
     max-width: 50rem;
 }
+
+
 
 .success {
     color: var(--webte-color-green);
@@ -324,9 +326,7 @@ button:hover {
 }
 
 
-.hidden {
-    display: none;
-}
+
 
 .table-nav {
     display: flex;
@@ -347,6 +347,62 @@ button:hover {
     font-size: 1.5rem;
 }
 
+.form-record {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-top: 2px solid var(--webte-color-yellow);
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+.modal2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 70rem;
+    background-color: var(--webte-color-dkGrey);
+    position: relative;
+    border-radius: 5px;
+}
+
+.modal-data p {
+    font-size: 1.7rem;
+    padding: 0;
+    margin: 1rem 1rem;
+}
+
+#close-modal {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5rem;
+    height: 5rem;
+    padding: 0 .2rem;
+    cursor: pointer;
+    background-color: var(--webte-color-yellow);
+    border-radius: 5px;
+}
+
+#modal-prizes {
+    font-size: 2rem;
+    border-top: 2px solid var(--webte-color-yellow);
+    border-bottom: 2px solid var(--webte-color-yellow);
+}
+
+.hidden {
+    display: none;
+}
 
 @media screen and (max-width:470px) {
 
